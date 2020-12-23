@@ -1,6 +1,13 @@
 # OpenCV commands 
 
+OpenCV 커맨드 정리 
+
+md editor/viewer: [Typora](https://typora.io/)  
+
+# 1. Basics
+
 ## 이미지 import 
+
 ```
 img = cv2.imread("path/image.png") 
 ```
@@ -25,14 +32,15 @@ while True:
 * break 문 만들기 
 ```
 if cv2.waitKey(1) & 0xFF == ord('q'): 
-	break ```
-* 키보드 Q 눌렀을때 break 
+	break 
 ```
+* 키보드 Q 눌렀을때 break 
+
 ## 웹캠 import 하기 
-*비디오랑 비슷함 
+* 비디오랑 비슷함 
 ```
 cap = cv2.VideoCapture(0) 
-``` 
+```
 * 웹캠 하나면 그냥 0 하면 됨 
 ```
 cap.set(3,640) //width ID:3
@@ -61,6 +69,8 @@ imgCanny = cv2.Canny(img,200,200)
 
 ## Erosion, Dilation 컨셉 
 
+
+
 # 3. Resizing 
 
 ## 사이즈 알아내기 
@@ -76,7 +86,7 @@ print(img.shape)
 ## Resize 
 ``` 
 imgResize = cv2.resize(img,(300,200))
-``` 
+```
 - (Height, Width) of image_name 설정 
 
 ## Crop 
@@ -84,5 +94,37 @@ imgResize = cv2.resize(img,(300,200))
 imgCrop = img[0:200, 200:500]
 ```
 - Array 로 생각해서 [Height, Width] range 설정 
+
+
+
+# 4. Shapes and Texts 
+
+## Coloring 
+
+- numpy 사용해서 512 x 512 black image 만들기 
+
+``` python
+img = np.zeros((512,512)) 
+```
+
+- Color functionality 줄라면 3 채널 필요 
+  - Blue, Green, Red 
+  - img[:] 하면 전체 다 
+
+```
+img = np.zeros((512,512,3), np.uint8)
+img[:] = 255,0,0 //B G R	 
+```
+
+![image-20201223180514895](C:\Users\Alfonso\AppData\Roaming\Typora\typora-user-images\image-20201223180514895.png) 
+
+- 이미지의 일부 section 만 하려면  
+
+``` 
+img[35:50, 
+```
+
+
+
 
 
