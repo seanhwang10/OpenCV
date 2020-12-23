@@ -27,7 +27,7 @@ while True:
 if cv2.waitKey(1) & 0xFF == ord('q'): 
 	break ```
 *키보드 Q 눌렀을때 break 
-
+```
 ## 웹캠 import 하기 
 *비디오랑 비슷함 
 ```
@@ -38,7 +38,7 @@ cap.set(3,640) //width ID:3
 cap.set(4,480) //height ID:4 
 cap.set(10,100) //brightness ID:10 
 ```
-#2. OpenCV Functions 
+# 2. OpenCV Functions 
 
 ## Grayscale 하기 
 ```
@@ -60,7 +60,7 @@ imgCanny = cv2.Canny(img,200,200)
 
 ## Erosion, Dilation 컨셉 
 
-#3. Resizing 
+# 3. Resizing 
 
 ## 사이즈 알아내기 
 ```
