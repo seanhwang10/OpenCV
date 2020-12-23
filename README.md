@@ -16,17 +16,17 @@ cv2.waitKey(딜레이) in ms
 ```cap = cv2.VideoCapture("path/video.mp4") ```
 
 ## 비디오 display 
-*비디오는 이미지의 연속이라 루프 필요 
+* 비디오는 이미지의 연속이라 루프 필요 
 ```
 while True: 
 	success, img = cap.read() 
 	cv2.imshow("name of window", img)
 ```
-*break 문 만들기 
+* break 문 만들기 
 ```
 if cv2.waitKey(1) & 0xFF == ord('q'): 
 	break ```
-*키보드 Q 눌렀을때 break 
+* 키보드 Q 눌렀을때 break 
 ```
 ## 웹캠 import 하기 
 *비디오랑 비슷함 
@@ -50,14 +50,14 @@ convention: COLOR_BGR2GRAY
 ```
 imgBlur = cv2.GaussianBlur(img, (3,3),0)
 ```
-*(3,3) = kernalsize. 얼마나 blur 할건지 
-*Odd number 여야함. 클수록 더 blur 
+* (3,3) = kernalsize. 얼마나 blur 할건지 
+* Odd number 여야함. 클수록 더 blur 
 
 ## Edge detector 
 ```
 imgCanny = cv2.Canny(img,200,200)
 ```
-*Threshold 값 높일수록 더 둔감.
+* Threshold 값 높일수록 더 둔감.
 
 ## Erosion, Dilation 컨셉 
 
@@ -67,10 +67,22 @@ imgCanny = cv2.Canny(img,200,200)
 ```
 print(img.shape)
 ```
-```
-OUTPUT
+- OUTPUT
+``` 
 (838, 682, 3)
 ```
-- 
+- (Height, Width, Num of Channel RGB) 
+
+## Resize 
+``` 
+imgResize = cv2.resize(img,(300,200))
+``` 
+- (Height, Width) of image_name 설정 
+
+## Crop 
+```
+imgCrop = img[0:200, 200:500]
+```
+- Array 로 생각해서 [Height, Width] range 설정 
 
 
