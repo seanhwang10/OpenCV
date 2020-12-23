@@ -1,11 +1,14 @@
-OpenCV commands 
+#OpenCV commands 
 
-- 이미지 import 
+## 이미지 import 
+```
 img = cv2.imread("path/image.png") 
-
-- 이미지 display 
+```
+## 이미지 display 
+```
 cv2.imshow("name of window", img)
 cv2.waitKey(딜레이) in ms 
+```
 * 딜레이 0 = 무한딜레이, 이미지 항상 보임  
 
 - 비디오 import 
