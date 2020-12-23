@@ -31,7 +31,8 @@ if cv2.waitKey(1) & 0xFF == ord('q'):
 ## 웹캠 import 하기 
 *비디오랑 비슷함 
 ```
-cap = cv2.VideoCapture(0) ```
+cap = cv2.VideoCapture(0) 
+``` 
 * 웹캠 하나면 그냥 0 하면 됨 
 ```
 cap.set(3,640) //width ID:3
