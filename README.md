@@ -249,6 +249,16 @@ while True:
 
 # 7. Color Detection 
 
+- HSV = hue, saturation, value 
+
+
+
+
+
+
+
+
+
 
 
 
