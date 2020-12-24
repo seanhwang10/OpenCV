@@ -254,14 +254,18 @@ while True:
 - Using trackbars to find optimum HSV value for a color 
 
 ```python
+#Just for making the function argument valid 
+def empty(a):
+    pass 
+
 cv2.namedWindow("Trackbars")
 cv2.resizeWindow("Trackbars",640,240)
 
-cv2.createTrackbar("Hue Min", "Trackbars", 0, 179)
+cv2.createTrackbar("Hue Min", "Trackbars", 0, 179, empty) 
 ```
 
 ```
-(parameter, window, initial value, max value) 
+(parameter, window, initial value, max value, func) 
 ```
 
 
