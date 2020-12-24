@@ -30,7 +30,7 @@ cv2.waitKey(딜레이) in ms
 
 ## 비디오 display 
 * 비디오는 이미지의 연속이라 루프 필요 
-```
+```python
 while True: 
 	success, img = cap.read() 
 	cv2.imshow("name of window", img)
@@ -199,7 +199,7 @@ finalImg = cv2.warpPerspective(img, matrix, (width,height))
 - pts1, pts2 로 perspective matrix 만들어 준 뒤 
 - warpPerspective 함수 이용하고 display! 
 
-```
+```python
 width,height = 300,300
 pts1 = np.float32([[178,349],[464,229],[300,621],[579,507]])
 pts2 = np.float32([[0,0],[width,0],[0,height],[width,height]])
@@ -217,6 +217,37 @@ cv2.waitKey(0)
 ![](https://github.com/seanhwang10/OpenCV/blob/main/images/warp_perspective_outcome2.PNG)
 
 
+
+# 6. Joining Images 
+
+- 다수의 이미지를 하나의 이미지로 stacking 하는것
+
+```
+imgHor = np.hstack((img,img)) //horizontal stack
+imgVer = np.vstack((img,img)) //vertical stack 
+```
+
+- 두개의 이미지 dimension, channel 이 같아야됨 
+
+웹캠 2개 합치기: 
+
+```python
+cap = cv2.VideoCapture(0)
+cap.set(3,640)
+cap.set(4,480)
+
+while True:
+    success, img = cap.read()
+    imgHor = np.hstack((img, img))
+    cv2.imshow("webcam 2", imgHor)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+```
+
+
+
+# 7. Color Detection 
 
 
 
