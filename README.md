@@ -191,6 +191,26 @@ pts2 = np.float32([[],[],[],[]]) //Transformed to
   - 좌상, 우상, 좌하, 우하 순 
 - pts2 는 추출된 4각형을 어떤 shape 으로 만들건지 edge 설정 
 
+```
+matrix = cv2.getPerspectiveTransform(pts1,pts2)
+finalImg = cv2.warpPerspective(img, matrix, (width,height))
+```
+
+- pts1, pts2 로 perspective matrix 만들어 준 뒤 
+- warpPerspective 함수 이용하고 display! 
+
+```
+width,height = 300,300
+pts1 = np.float32([[178,349],[464,229],[300,621],[579,507]])
+pts2 = np.float32([[0,0],[width,0],[0,height],[width,height]])
+
+matrix = cv2.getPerspectiveTransform(pts1,pts2)
+finalImg = cv2.warpPerspective(img, matrix, (width,height))
+
+```
+
+![](https://github.com/seanhwang10/OpenCV/blob/main/images/warp_perspective_outcome.PNG) 
+
 
 
 
