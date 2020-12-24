@@ -73,13 +73,15 @@ imgCanny = cv2.Canny(img,200,200)
 
 # 3. Resizing 
 
-## 사이즈 알아내기 
+## 사이즈 알아내기 img.shape
 ```
 print(img.shape)
 ```
 - OUTPUT
 ``` 
 (838, 682, 3)
+img.shape[0] = 838 //Height 
+img.shape[1] = 682 //Width 
 ```
 - (Height, Width, Num of Channel RGB) 
 
@@ -113,18 +115,57 @@ img = np.zeros((512,512))
 
 ```
 img = np.zeros((512,512,3), np.uint8)
-img[:] = 255,0,0 //B G R	 
+img[:] = 255,0,0 //B G R	  
 ```
-
-![image-20201223180514895](C:\Users\Alfonso\AppData\Roaming\Typora\typora-user-images\image-20201223180514895.png) 
 
 - 이미지의 일부 section 만 하려면  
 
 ``` 
-img[35:50, 
+img[10:50, 100:300] = 100, 255, 0 
+// Height, Width Range 지정해주면 됨 
 ```
 
 
 
+## Creating objects 
 
+공동으로 cv2.OBJECT() 
+
+parameters: (img, starting point, ending point, color, thickness) 
+
+- img 라는 그림 위에다가 그려주는 function 
+
+### 1. Lines 
+
+```
+cv2.line(img,(0,0),(300,300),(0,255,0),3)
+```
+
+- Starting at point (0,0) to point (300,300). Green line, 넓이 3 
+
+### 2. Rectangles 
+
+```
+cv2.rectangle(img,(0,0),(img.shape[1], img.shape[0]),(0,0,255))
+```
+
+- img.shape[1] 이랑 [0] 이 이미지의 우측하단 끝부분 Width 랑 Height 니까 저렇게 하면 꽉 참 
+
+- 맨 뒤에다가 cv2.FILLED 추가하면 rectangle 안에 color fill 
+
+### 3. Circles 
+
+```
+cv2.circle(img,(250,250),30,(100,255,0),3)
+```
+
+- img, center point, radius, color, thickness 
+
+### 4. Text 
+
+```
+cv2.putText(img, "Panther", (255,255),cv2.FONT_ITALIC, 1, (255,255,0),1)
+```
+
+- img, "TEXT", location, font, size, color, thickness 
 
