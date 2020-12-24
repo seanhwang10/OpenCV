@@ -207,6 +207,9 @@ pts2 = np.float32([[0,0],[width,0],[0,height],[width,height]])
 matrix = cv2.getPerspectiveTransform(pts1,pts2)
 finalImg = cv2.warpPerspective(img, matrix, (width,height))
 
+cv2.imshow("original",img)
+cv2.imshow("Airpod", finalImg)
+cv2.waitKey(0)
 ```
 
 ![](https://github.com/seanhwang10/OpenCV/blob/main/images/warp_perspective_outcome.PNG) 
