@@ -214,7 +214,7 @@ cv2.waitKey(0)
 
 ![](https://github.com/seanhwang10/OpenCV/blob/main/images/warp_perspective_outcome.PNG) 
 
-
+![](https://github.com/seanhwang10/OpenCV/blob/main/images/warp_perspective_outcome2.PNG)
 
 
 
