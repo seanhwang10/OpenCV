@@ -18,7 +18,7 @@ md editor/viewer: [Typora](https://typora.io/)
 img = cv2.imread("path/image.png") 
 ```
 ## 이미지 display 
-```
+```python
 cv2.imshow("name of window", img)
 cv2.waitKey(딜레이) in ms 
 ```
@@ -36,7 +36,7 @@ while True:
 	cv2.imshow("name of window", img)
 ```
 * break 문 만들기 
-```
+```python
 if cv2.waitKey(1) & 0xFF == ord('q'): 
 	break 
 ```
@@ -44,11 +44,11 @@ if cv2.waitKey(1) & 0xFF == ord('q'):
 
 ## 웹캠 import 하기 
 * 비디오랑 비슷함 
-```
+```python
 cap = cv2.VideoCapture(0) 
 ```
 * 웹캠 하나면 그냥 0 하면 됨 
-```
+```python
 cap.set(3,640) //width ID:3
 cap.set(4,480) //height ID:4 
 cap.set(10,100) //brightness ID:10 
@@ -56,19 +56,19 @@ cap.set(10,100) //brightness ID:10
 # 2. OpenCV Functions 
 
 ## Grayscale 하기 
-```
+```python
 imgGray = cv2.cvtColor(img, cv2.COLOR_..) 
 convention: COLOR_BGR2GRAY
 ```
 ## Blur 
-```
+```python
 imgBlur = cv2.GaussianBlur(img, (3,3),0)
 ```
 * (3,3) = kernalsize. 얼마나 blur 할건지 
 * Odd number 여야함. 클수록 더 blur 
 
 ## Edge detector 
-```
+```python
 imgCanny = cv2.Canny(img,200,200)
 ```
 * Threshold 값 높일수록 더 둔감.
@@ -80,11 +80,11 @@ imgCanny = cv2.Canny(img,200,200)
 # 3. Resizing 
 
 ## 사이즈 알아내기 img.shape
-```
+```python
 print(img.shape)
 ```
 - OUTPUT
-``` 
+``` python
 (838, 682, 3)
 img.shape[0] = 838 //Height 
 img.shape[1] = 682 //Width 
@@ -92,13 +92,13 @@ img.shape[1] = 682 //Width
 - (Height, Width, Num of Channel RGB) 
 
 ## Resize 
-``` 
+``` python
 imgResize = cv2.resize(img,(300,200))
 ```
 - (Height, Width) of image_name 설정 
 
 ## Crop 
-```
+```python
 imgCrop = img[0:200, 200:500]
 ```
 - Array 로 생각해서 [width, height] range 설정 
@@ -119,14 +119,14 @@ img = np.zeros((512,512))
   - Blue, Green, Red 
   - img[:] 하면 전체 다 
 
-```
+```python
 img = np.zeros((512,512,3), np.uint8)
 img[:] = 255,0,0 //B G R	  
 ```
 
 - 이미지의 일부 section 만 하려면  
 
-``` 
+``` python
 img[10:50, 100:300] = 100, 255, 0 
 // Height, Width Range 지정해주면 됨 
 ```
@@ -143,7 +143,7 @@ parameters: (img, starting point, ending point, color, thickness)
 
 ### 1. Lines 
 
-```
+```python
 cv2.line(img,(0,0),(300,300),(0,255,0),3)
 ```
 
@@ -151,7 +151,7 @@ cv2.line(img,(0,0),(300,300),(0,255,0),3)
 
 ### 2. Rectangles 
 
-```
+```python
 cv2.rectangle(img,(0,0),(img.shape[1], img.shape[0]),(0,0,255))
 ```
 
@@ -161,7 +161,7 @@ cv2.rectangle(img,(0,0),(img.shape[1], img.shape[0]),(0,0,255))
 
 ### 3. Circles 
 
-```
+```python
 cv2.circle(img,(250,250),30,(100,255,0),3)
 ```
 
@@ -169,7 +169,7 @@ cv2.circle(img,(250,250),30,(100,255,0),3)
 
 ### 4. Text 
 
-```
+```python
 cv2.putText(img, "Panther", (255,255),cv2.FONT_ITALIC, 1, (255,255,0),1)
 ```
 
@@ -182,7 +182,7 @@ cv2.putText(img, "Panther", (255,255),cv2.FONT_ITALIC, 1, (255,255,0),1)
 - 삐뚤어져있는 이미지 똑바로 맞추는거. 
   - 에어팟 사진 사용 
 
-```
+```python
 pts1 = np.float32([[],[],[],[]]) //From original pic
 pts2 = np.float32([[],[],[],[]]) //Transformed to 
 ```
@@ -191,7 +191,7 @@ pts2 = np.float32([[],[],[],[]]) //Transformed to
   - 좌상, 우상, 좌하, 우하 순 
 - pts2 는 추출된 4각형을 어떤 shape 으로 만들건지 edge 설정 
 
-```
+```python
 matrix = cv2.getPerspectiveTransform(pts1,pts2)
 finalImg = cv2.warpPerspective(img, matrix, (width,height))
 ```
@@ -222,7 +222,7 @@ cv2.waitKey(0)
 
 - 다수의 이미지를 하나의 이미지로 stacking 하는것
 
-```
+```python
 imgHor = np.hstack((img,img)) //horizontal stack
 imgVer = np.vstack((img,img)) //vertical stack 
 ```
@@ -250,6 +250,21 @@ while True:
 # 7. Color Detection 
 
 - HSV = hue, saturation, value 
+
+- Using trackbars to find optimum HSV value for a color 
+
+```python
+cv2.namedWindow("Trackbars")
+cv2.resizeWindow("Trackbars",640,240)
+
+cv2.createTrackbar("Hue Min", "Trackbars", 0, 179)
+```
+
+```
+(parameter, window, initial value, max value) 
+```
+
+
 
 
 
