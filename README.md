@@ -6,6 +6,12 @@ md editor/viewer: [Typora](https://typora.io/)
 
 # 1. Basics
 
+- [x, y] = width, height 
+
+  - 우로 갈수록 x increase 
+
+  - #### 하로 갈수록 y increase  
+
 ## 이미지 import 
 
 ```
@@ -95,7 +101,7 @@ imgResize = cv2.resize(img,(300,200))
 ```
 imgCrop = img[0:200, 200:500]
 ```
-- Array 로 생각해서 [Height, Width] range 설정 
+- Array 로 생각해서 [width, height] range 설정 
 
 
 
@@ -168,4 +174,28 @@ cv2.putText(img, "Panther", (255,255),cv2.FONT_ITALIC, 1, (255,255,0),1)
 ```
 
 - img, "TEXT", location, font, size, color, thickness 
+
+
+
+# 5. Warp perspective 
+
+- 삐뚤어져있는 이미지 똑바로 맞추는거. 
+  - 에어팟 사진 사용 
+
+```
+pts1 = np.float32([[],[],[],[]]) //From original pic
+pts2 = np.float32([[],[],[],[]]) //Transformed to 
+```
+
+- pts1 은 원래 사진에서 4개 포인트 추출 
+  - 좌상, 우상, 좌하, 우하 순 
+- pts2 는 추출된 4각형을 어떤 shape 으로 만들건지 edge 설정 
+
+
+
+
+
+
+
+
 
