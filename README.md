@@ -303,7 +303,7 @@ mask = cv2.inRange(imgHSV, lower, upper)
 
 ![](https://github.com/seanhwang10/OpenCV/blob/main/images/mask_outcome.PNG)
 
-## Extracting the specific color 
+## Extracting a specific color 
 
 - img 랑 mask 랑 Merge 하기위해 bitwise and 사용 
 
@@ -459,6 +459,14 @@ cv2.waitKey(0)
 ```
 
 ![](https://github.com/seanhwang10/OpenCV/blob/main/images/shape_output2.PNG)
+
+
+
+# 9. Facial Recognition & Object Recognition 
+
+- 찾으려는 형상 (얼굴, 물체)등을 학습시켜 cascade 만들어야함. 
+  - OpenCV provided cascade 로 사람 얼굴 identify 는 가능. 
+  - 누군지 identify 하려면 내가 custom cascade 만들어야함
 
 
 
