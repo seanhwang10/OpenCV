@@ -251,6 +251,8 @@ while True:
 
 - HSV = hue, saturation, value 
 
+## Trackbars 
+
 - Using trackbars to find optimum HSV value for a color 
 
 ```python
@@ -268,9 +270,60 @@ cv2.createTrackbar("Hue Min", "Trackbars", 0, 179, empty)
 (parameter, window, initial value, max value, func) 
 ```
 
+- Getting trackbar values 
+
+```python
+h_min = cv2.getTrackbarPos("Hue Min", "Trackbars")
+```
+
+```
+(Trackbar parameter, Trackbar window) 
+```
+
+## Creating a mask 
+
+- Require lower and upper array of HSV 
+
+```python
+    lower = np.array([h_min, s_min, v_min])
+    upper = np.array([h_max, s_max, v_max])
+```
+
+```python
+    mask = cv2.inRange(imgHSV, lower, upper)
+```
+
+- 마스크에서 원하는 색상은 WHITE 
+- 안 원하는 색상은 BLACK 으로 될때까지 Trackbar 조정 
+  - 최적화된 Hue, Saturation, Value의 Min Max 값 찾기 
 
 
 
+
+
+
+
+
+
+
+
+
+
+HSV 경우 Hue, Saturation, Value 의 Min Max 필요 = 6 TBs 
+
+```python
+cv2.createTrackbar("Hue Min", "Trackbars", 0, 179, empty)
+cv2.createTrackbar("Hue Max", "Trackbars", 179, 179, empty)
+cv2.createTrackbar("Sat Min", "Trackbars", 0, 255, empty)
+cv2.createTrackbar("Sat Max", "Trackbars", 255, 255, empty)
+cv2.createTrackbar("Val Min", "Trackbars", 0, 255, empty)
+cv2.createTrackbar("Val Max", "Trackbars", 255, 255, empty)
+```
+
+- In OpenCV, 
+  - Hue Max = 179 
+  - Sat Max = 255 
+  - Value Max = 255
 
 
 
