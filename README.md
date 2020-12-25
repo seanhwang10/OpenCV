@@ -297,7 +297,7 @@ h_min = cv2.getTrackbarPos("Hue Min", "Trackbars")
 - 안 원하는 색상은 BLACK 으로 될때까지 Trackbar 조정 
   - 최적화된 Hue, Saturation, Value의 Min Max 값 찾기 
 
-
+![](https://github.com/seanhwang10/OpenCV/blob/main/images/mask_outcome.PNG)
 
 
 
