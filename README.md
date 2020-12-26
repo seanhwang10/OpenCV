@@ -470,9 +470,97 @@ cv2.waitKey(0)
   - OpenCV provided cascade 로 사람 얼굴 identify 는 가능. 
   - 누군지 identify 하려면 내가 custom cascade 만들어야함
 
+Haarcascade 사용. 
+
+```python
+faceCascade = cv2.CascadeClassifier("CASCADE위치")
+```
+
+- Grayscale 로 바꾼 img 에서: 
+
+```python
+faces = faceCascade.detectMultiScale(imgGray, 2, 4)
+```
+
+```
+(source image, sensitivity, parameter2) 
+```
+
+- 얼굴 인식 잘 될때까지 두개 파라미터 수정. 
+- faceCascade.detectMultiscale 하면 x,y,w,h 나옴 
+  - Bounding Box 그리는대 사용. 
+
+```python
+for (x,y,w,h) in faces:
+    cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+```
+
+- 사람, 고양이 얼굴인식 (웹캠) 
+
+```python
+import cv2
+import numpy as np
+
+faceCascade = cv2.CascadeClassifier("cascades/haarcascade_frontalface_default.xml")
+catCascade = cv2.CascadeClassifier("cascades/haarcascade_frontalcatface_extended.xml")
+
+cap = cv2.VideoCapture(0)
+while True:
+    success, img = cap.read()
+    imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    faces = faceCascade.detectMultiScale(imgGray, 1.5, 4)
+    catface = catCascade.detectMultiScale(imgGray, 1.1, 4)
+
+    cap.set(10, 100)
+
+    for (x,y,w,h) in faces:
+        cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
+        cv2.putText(img,"Saram",(x+w+5,y+h),cv2.FONT_HERSHEY_COMPLEX,0.5,(0,255,0))
+
+    for (x,y,w,h) in catface:
+        cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),2)
+        cv2.putText(img,"goyangE",(x+w+5,y+h),cv2.FONT_HERSHEY_COMPLEX,0.5,(0,255,0))
 
 
 
+    cv2.imshow("Faces", img)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+```
+
+![](https://github.com/seanhwang10/OpenCV/blob/main/images/catrecog.gif)
+
+- Still Image
+
+```python
+import cv2
+import numpy as np
+
+faceCascade = cv2.CascadeClassifier("cascades/haarcascade_frontalface_default.xml")
+catCascade = cv2.CascadeClassifier("cascades/haarcascade_frontalcatface_extended.xml")
+
+img = cv2.imread("images/catandhuman.PNG")
+imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+faces = faceCascade.detectMultiScale(imgGray, 1.5, 4)
+catface = catCascade.detectMultiScale(imgGray, 1.1, 4)
+
+for (x,y,w,h) in faces:
+    cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
+    cv2.putText(img,"Human",(x+w+5,y+h),cv2.FONT_HERSHEY_COMPLEX,0.5,(0,255,0))
+
+for (x,y,w,h) in catface:
+    cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),2)
+    cv2.putText(img,"Cat",(x+w+5,y+h),cv2.FONT_HERSHEY_COMPLEX,0.5,(0,255,0))
+
+cv2.imshow("Result", img)
+cv2.waitKey(0)
+
+```
+
+![](https://github.com/seanhwang10/OpenCV/blob/main/images/catandhuman.PNG)
+
+![](https://github.com/seanhwang10/OpenCV/blob/main/images/face_outcome.PNG)
 
 
 

@@ -39,7 +39,6 @@ while True:
     imgBlur = cv2.GaussianBlur(imgGray, (7, 7), 1)
     imgCanny = cv2.Canny(imgBlur, 50, 50)
 
-    cap.set(10, 50)
     getContours(imgCanny)
     cv2.imshow("Video", imgContour)
     if cv2.waitKey(1) & 0xFF == ord('q'):
