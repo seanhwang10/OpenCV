@@ -496,6 +496,8 @@ for (x,y,w,h) in faces:
 ```
 
 - 사람, 고양이 얼굴인식 (웹캠) 
+  - Cascade 1: haar frontalface default 
+  - Cascade 2: Frontal cat face 
 
 ```python
 import cv2
