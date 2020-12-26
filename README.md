@@ -566,7 +566,10 @@ cv2.waitKey(0)
 
 
 
+# 10. Facial Identification via custom cascade 
 
+- 사람 얼굴을 알아보고 딥러닝 학습된 정보 통하여 이름, 성별 등 구별. 
+- Tensorflow 사용하여 딥러닝후 cascade 만들고 항상 parameter 조정 필요. 
 
 
 
