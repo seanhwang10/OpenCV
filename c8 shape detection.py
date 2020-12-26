@@ -60,16 +60,28 @@ def getContours(img):
                 objectType = "Circle"
             cv2.putText(imgContour, objectType, (x+w+5,y+h),cv2.FONT_HERSHEY_COMPLEX,0.5,(0,255,0))
 
+cap = cv2.VideoCapture(0)
 
-img = cv2.imread("images/shapes.PNG")
-imgContour = img.copy()
-imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-imgBlur = cv2.GaussianBlur(imgGray, (7,7), 1)
-imgCanny = cv2.Canny(imgBlur, 50, 50)
+while True:
+    success, img = cap.read()
+    imgContour = img.copy()
+    imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    imgBlur = cv2.GaussianBlur(imgGray, (7, 7), 1)
+    imgCanny = cv2.Canny(imgBlur, 50, 50)
 
-getContours(imgCanny)
+    # getContours(imgCanny)
+    cv2.imshow("Video", imgContour)
 
-imgStack = stackImages(0.6, ([img, imgGray], [imgCanny, imgContour]))
-cv2.imshow("Shapes", imgStack)
-cv2.imshow("Detect", imgContour)
-cv2.waitKey(0)
+#
+# img = cv2.imread("images/shapes.PNG")
+# imgContour = img.copy()
+# imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+# imgBlur = cv2.GaussianBlur(imgGray, (7,7), 1)
+# imgCanny = cv2.Canny(imgBlur, 50, 50)
+#
+# getContours(imgCanny)
+#
+# # imgStack = stackImages(0.6, ([img, imgGray], [imgCanny, imgContour]))
+# # cv2.imshow("Shapes", imgStack)
+# cv2.imshow("Detected", imgContour)
+# cv2.waitKey(0)

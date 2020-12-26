@@ -460,6 +460,8 @@ cv2.waitKey(0)
 
 ![](https://github.com/seanhwang10/OpenCV/blob/main/images/shape_output2.PNG)
 
+- Can improve the accuracy & details by adding more conditions in the function above. 
+
 
 
 # 9. Facial Recognition & Object Recognition 
