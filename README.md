@@ -464,7 +464,7 @@ cv2.waitKey(0)
 
 
 
-# 9. Facial Recognition & Object Recognition 
+# 9. Facial Detection & Object Recognition 
 
 - 찾으려는 형상 (얼굴, 물체)등을 학습시켜 cascade 만들어야함. 
   - OpenCV provided cascade 로 사람 얼굴 identify 는 가능. 
@@ -566,7 +566,7 @@ cv2.waitKey(0)
 
 
 
-# 10. Facial Identification via custom cascade 
+# 10. Facial Recognition 
 
 - 사람 얼굴을 알아보고 학습된 cascade 통하여 이름, 성별 등 구별. 
 
@@ -582,6 +582,7 @@ cv2.waitKey(0)
 
 - 사진과 이름을 주고 Train. 그리고 identify 시키기. 
   - 딥러닝 활용: Tensorflow, dlib 참조
+  - 여기서는 face-detection 라이브러리 사용 
 - 12/27
 
 
