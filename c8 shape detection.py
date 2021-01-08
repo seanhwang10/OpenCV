@@ -69,8 +69,11 @@ while True:
     imgBlur = cv2.GaussianBlur(imgGray, (7, 7), 1)
     imgCanny = cv2.Canny(imgBlur, 50, 50)
 
-    # getContours(imgCanny)
+    getContours(imgCanny)
     cv2.imshow("Video", imgContour)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 
 #
 # img = cv2.imread("images/shapes.PNG")
@@ -81,7 +84,7 @@ while True:
 #
 # getContours(imgCanny)
 #
-# # imgStack = stackImages(0.6, ([img, imgGray], [imgCanny, imgContour]))
-# # cv2.imshow("Shapes", imgStack)
+# imgStack = stackImages(0.6, ([img, imgGray], [imgCanny, imgContour]))
+# cv2.imshow("Shapes", imgStack)
 # cv2.imshow("Detected", imgContour)
 # cv2.waitKey(0)
