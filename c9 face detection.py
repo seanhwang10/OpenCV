@@ -4,9 +4,9 @@ import numpy as np
 faceCascade = cv2.CascadeClassifier("cascades/haarcascade_frontalface_default.xml")
 catCascade = cv2.CascadeClassifier("cascades/haarcascade_frontalcatface_extended.xml")
 
-img = cv2.imread("images/family.PNG")
 
-# cap = cv2.VideoCapture(0)
+
+cap = cv2.VideoCapture(0)
 
 
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
